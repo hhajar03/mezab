@@ -1,0 +1,163 @@
+<html  dir="rtl" lang="ar">
+
+<head>
+<!-- created by Hebah Hajar-->
+<link rel="stylesheet" type="text/css" href="rcstyle3.css" media="screen"/>
+<link rel="stylesheet" href="style.css">
+<title>
+MEZAB 2
+</title>
+</head>
+
+<body dir='auto'>
+
+<div class="top">
+  <div class="header">
+    <div class="right" lang="ar"> <p2>  Mezab ميزاب </p2></div>
+    <div class="left"> 
+      <h2 dir="rtl" ><b>فكرتنا</b></h2>
+      <p dir="rtl">
+      نهتم بجمع أراء المجتمع و عكسها بشكل مسؤول في أرقام, لنسهم في تمكين المهتمين بالمواضيع الاجتماعية الإداريه من اتخاذ قرارات رصيتة.
+      </p>
+    </div>
+  </div>
+</div>
+<dive class='main'>
+</dive>
+<div class="container">
+  <div class="navigation"> <a href="file:///C:/Users/Hebah/Desktop/Mizab/beautiful-night/index2.html">home page </a>
+  <a href="file:///C:/Users/Hebah/Desktop/Mizab/beautiful-night/تقارير.HTML">تقارير </a> 
+  <a href="file:///C:/Users/Hebah/Desktop/Mizab/beautiful-night/راسلنا.HTML">راسلنا</a> 
+  <a href="file:///C:/Users/Hebah/Desktop/Mizab/beautiful-night/about.HTML">عن ميزاب </a> 
+    <div class="clearer"><span></span></div>
+  </div>
+  
+  <br><br><br><br><br><br><br><br>
+
+  <h2 dir="rtl">إنشاء حساب جديد</h2>
+
+<h4 dir="rtl">
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+</h4>
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="img2/ميزاب.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container4">
+    
+      <label for="email"><b><h1 dir="rtl"> البريد اللإلكتروني </h1></b></label>
+      <h3 dir="rtl"><input type="text" placeholder="البريد الإلكتروني" name="email" required></h3>
+      <h1> hello</h1>
+      <span class="error">* <?php echo $emailErr;?></span>
+      <h1>hello2</h1>
+
+      <label for="psw"><b><h1 dir="rtl"> كلمت السر</h1></b></label>
+      <h3 dir="rtl"><input type="password" placeholder="كلمت السر" name="psw" required></h3>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container4" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+    
+</div>
+<h3>before PHP</h3>
+  <?php
+  echo "in php";
+// define variables and set to empty values
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed"; 
+    }
+  }
+  
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format"; 
+    }
+  }
+    
+  if (empty($_POST["website"])) {
+    $website = "";
+  } else {
+    $website = test_input($_POST["website"]);
+    // check if URL address syntax is valid
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL"; 
+    }    
+  }
+
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = test_input($_POST["comment"]);
+  }
+
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+<h3> after PHP</h3>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+  
+  <br><br><br><br><br><br><br><br>
+ 
+
+  
+   <div class="footer">&copy; 2006 <a href="#">Website.com</a>. Valid
+   <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &amp; 
+   <a href="http://validator.w3.org/check?uri=referer">XHTML</a>. Template design by 
+   <a href="http://arcsin.se">Arcsin</a> </div>
+  
+  
+  
+  
+</div>
+
+
+
+
+</body>
+</html>
